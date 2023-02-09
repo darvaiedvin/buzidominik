@@ -1,0 +1,43 @@
+
+const submitBtn = document.getElementById('submit-btn');
+const clearBtn = document.getElementById('clear-btn');
+const inputEl = document.getElementById('text-input');
+const listEl = document.getElementById('ordered-list');
+
+
+submitBtn.addEventListener('click', () => {
+
+    if(inputEl.value.length > 0){
+    listEl.innerHTML += `<div><li>${inputEl.value}</li> <button id='done-btn'>Done</button><div>`;
+    }
+    inputEl.value = null;
+    const doneBtn= document.querySelectorAll('#done-btn');
+
+    doneBtn.forEach(function(btn){
+        btn.addEventListener('click', () =>{
+        btn.parentElement.innerHTML = null;
+            })
+        });
+    }
+)
+
+
+clearBtn.addEventListener('click', () => {
+    listEl.innerHTML = null;
+})
+
+inputEl.addEventListener('keyup', (e) => {
+    if(e.key === 'Enter') {
+        if(inputEl.value.length > 0){
+            listEl.innerHTML += `<div><li>${inputEl.value}</li> <button id='done-btn'>Done</button><div>`;
+            }
+            inputEl.value = null;
+            const doneBtn= document.querySelectorAll('#done-btn');
+        
+            doneBtn.forEach(function(btn){
+                btn.addEventListener('click', () =>{
+                btn.parentElement.innerHTML = null;
+                    })
+                });
+    }
+})
